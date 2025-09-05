@@ -20,7 +20,9 @@ public class Category {
 	private String categoryname;
 	
 	private String images;
-
+	
+	private int user_id;
+	
 	public Category(int id, String categoryname, String images) {
 		super();
 		this.id = id;
@@ -53,5 +55,13 @@ public class Category {
 	public void setImages(String images) {
 		this.images = images;
 	}
+	public int getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
+	}
+	
+	
 	
 }

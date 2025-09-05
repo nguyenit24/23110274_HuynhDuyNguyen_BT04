@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import org.hibernate.Session;
+
 import entity.Category;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
@@ -11,6 +13,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.Part;
 import service.ICategoryService;
 import service.impl.CategoryService;
@@ -27,7 +30,7 @@ import util.Constant;
 		"/admin/category/delete" })
 public class CategoryController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	private HttpSession session = null;
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -40,6 +43,7 @@ public class CategoryController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		session = request.getSession(false);
 		ICategoryService categoryService = new CategoryService();
 		String uri = request.getRequestURI();
 		if (uri.contains("categories")) {

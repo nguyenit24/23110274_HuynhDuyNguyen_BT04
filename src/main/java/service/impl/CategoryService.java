@@ -3,11 +3,15 @@ package service.impl;
 import java.util.List;
 
 import dao.ICategoryDAO;
+import dao.IUserDao;
 import dao.impl.CategoryDAO;
+import dao.impl.UserDaoImpl;
 import entity.Category;
 import service.ICategoryService;
 
 public class CategoryService implements ICategoryService{
+	
+	IUserDao userDao = new UserDaoImpl();
 
 	ICategoryDAO categoryDAO = new CategoryDAO();
 	
@@ -44,6 +48,16 @@ public class CategoryService implements ICategoryService{
 	@Override
 	public Category findById(int id) {
 		return categoryDAO.findById(id);
+	}
+
+	@Override
+	public List<Category> findAllByUserId(int userId) {
+		if(userDao.get(String.valueOf(userId)) != null) {
+			return categoryDAO.findAllByUserId(userId);
+		}
+		else {
+			return List.of();
+		}
 	}
 
 }

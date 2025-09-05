@@ -95,4 +95,21 @@ public class CategoryDAO implements ICategoryDAO {
 		}
 	}
 
+	@Override
+	public List<Category> findAllByUserId(int userId) {
+		EntityManager em = JPAConfig.em();
+		List<Category> categories = null;
+		try {
+			categories = em.createQuery("SELECT c FROM Category c WHERE c.user_id = :userId", Category.class)
+					.setParameter("userId", userId)
+					.getResultList();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			em.close();
+		}
+		return categories;
+	}
+
 }

@@ -11,8 +11,8 @@
 </head>
 <body>
 <a href="<%=request.getContextPath()%>/logout">🚪 Logout</a>
-<div class="container mt-5">
-    <h2 class="mb-4">Category List</h2>
+<div class="container mt-1">
+    <h2 class="mb-2">Category List</h2>
     <table class="table table-striped table-bordered">
         <thead class="table-dark">
         <tr>
