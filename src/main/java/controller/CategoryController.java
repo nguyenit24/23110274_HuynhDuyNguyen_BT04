@@ -89,6 +89,7 @@ public class CategoryController extends HttpServlet {
 					String ext = fname.substring(index);
 					fname = System.currentTimeMillis() + ext;
 					part.write(uploadPath + File.separator + fname);
+				    System.out.print(fname);
 					category.setImages(fname);
 				}
 			} catch (Exception e) {
@@ -116,6 +117,7 @@ public class CategoryController extends HttpServlet {
 	                    String ext = fname.substring(index);
 	                    fname = System.currentTimeMillis() + ext;
 	                    filePart.write(uploadPath + File.separator + fname);
+	                    System.out.print(fname);
 	                    category.setImages(fname);
 	                } 
 	            } catch (Exception e) {

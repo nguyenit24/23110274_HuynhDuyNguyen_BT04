@@ -27,7 +27,7 @@
             <tr>
                 <td>${STT.index + 1}</td>
                 <td>${cate.categoryname}</td>
-                <td><img src="${pageContext.request.contextPath}/image?fname=${cate.images}"/></td>
+                <td><img width="200px" src="${pageContext.request.contextPath}/image?fname=${cate.images}"/></td>
                 <td>${cate.id}</td>
                 <td>
                     <a href="<c:url value='/admin/category/edit?id=${cate.id}'/>" class="btn btn-sm btn-primary">Edit</a>
