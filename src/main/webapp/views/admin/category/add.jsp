@@ -13,7 +13,7 @@
 <a href="<%=request.getContextPath()%>/logout">🚪 Logout</a>
 <div class="container mt-5">
     <h2 class="mb-4">Add New Category</h2>
-    <form action="<c:url value='/admin/category/add'/>" method="post" enctype="multipart/form-data"> 
+    <form action="<c:url value='/category/add'/>" method="post" enctype="multipart/form-data"> 
         <div class="mb-3">
             <label for="categoryname" class="form-label">Category Name</label>
             <input type="text" class="form-control" id="categoryname" name="categoryname" required>
@@ -25,7 +25,7 @@
         </div>
 
         <button type="submit" class="btn btn-success">Save</button>
-        <a href="<c:url value='/admin/categories'/>" class="btn btn-secondary">Cancel</a>
+        <a href="javascript:history.back()" class="btn btn-secondary">Cancel</a>
     </form>
 </div>
 

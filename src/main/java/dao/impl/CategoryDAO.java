@@ -7,6 +7,7 @@ import dao.ICategoryDAO;
 import entity.Category;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.NoResultException;
 
 public class CategoryDAO implements ICategoryDAO {
 
@@ -16,7 +17,8 @@ public class CategoryDAO implements ICategoryDAO {
 		Category category = null;
 		try {
 			category = em.find(Category.class, id);
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 			throw e;
 		} finally {
@@ -31,9 +33,6 @@ public class CategoryDAO implements ICategoryDAO {
 		List<Category> categories = null;
 		try {
 			categories = em.createNamedQuery("Category.findAll", Category.class).getResultList();
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw e;
 		} finally {
 			em.close();
 		}
@@ -48,7 +47,10 @@ public class CategoryDAO implements ICategoryDAO {
 			tx.begin();
 			em.merge(category);
 			tx.commit();
-		} catch (Exception e) {
+		}
+		catch (NoResultException e) {
+	    }
+		catch (Exception e) {
 			if (tx.isActive())
 				tx.rollback();
 			e.printStackTrace();
@@ -69,7 +71,10 @@ public class CategoryDAO implements ICategoryDAO {
                 em.remove(category);
             }
             tx.commit();
-        } catch (Exception e) {
+        }catch (NoResultException e) {
+        }
+        
+        catch (Exception e) {
             if (tx.isActive()) tx.rollback();
             e.printStackTrace();
             throw e;
@@ -103,12 +108,10 @@ public class CategoryDAO implements ICategoryDAO {
 			categories = em.createQuery("SELECT c FROM Category c WHERE c.user_id = :userId", Category.class)
 					.setParameter("userId", userId)
 					.getResultList();
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw e;
-		} finally {
+		}finally {
 			em.close();
 		}
+		System.out.println(categories + "TTTT");
 		return categories;
 	}
 

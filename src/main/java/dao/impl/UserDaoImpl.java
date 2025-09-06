@@ -15,12 +15,11 @@ public class UserDaoImpl implements IUserDao {
 		User user = null;
 		try {
 			TypedQuery<User> query = em.createQuery("SELECT u FROM User u WHERE u.userName = :username", User.class);
-			query.setParameter("username", username);
+			query.setParameter("username", username.trim());
 			user = query.getSingleResult();
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw e;
-		} finally {
+		} catch (NoResultException e) {
+			user = null;
+	    }finally {
 			em.close();
 		}
 		return user;

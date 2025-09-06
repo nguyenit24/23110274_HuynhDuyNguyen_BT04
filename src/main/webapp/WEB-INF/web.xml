@@ -49,4 +49,14 @@
     <servlet-name>HomeController</servlet-name>
     <url-pattern>/HomeController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LogoutController</display-name>
+    <servlet-name>LogoutController</servlet-name>
+    <servlet-class>controller.LogoutController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogoutController</servlet-name>
+    <url-pattern>/LogoutController</url-pattern>
+  </servlet-mapping>
 </web-app>

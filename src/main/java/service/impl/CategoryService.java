@@ -52,12 +52,7 @@ public class CategoryService implements ICategoryService{
 
 	@Override
 	public List<Category> findAllByUserId(int userId) {
-		if(userDao.get(String.valueOf(userId)) != null) {
-			return categoryDAO.findAllByUserId(userId);
-		}
-		else {
-			return List.of();
-		}
+		return categoryDAO.findAllByUserId(userId);
 	}
 
 }
